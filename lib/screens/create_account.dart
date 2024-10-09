@@ -41,7 +41,7 @@ class CreateAccountScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 3),
                 Container(
-                    height: 4,
+                    height: 2,
                     width: 100,
                     decoration: const BoxDecoration(
                       gradient: LinearGradient(
