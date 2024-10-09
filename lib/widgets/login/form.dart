@@ -18,15 +18,18 @@ class LoginForm extends StatelessWidget {
             labelText: "Password",
             placeholder: "Enter Password",
             isPassword: true),
-        const SizedBox(height: 10),
+        const SizedBox(height: 6),
         Align(
           alignment: Alignment.centerLeft,
           child: TextButton(
             onPressed: () {},
-            child: const Text(
-              'Forgot password?',
+            style: const ButtonStyle(
+                padding: WidgetStatePropertyAll(EdgeInsets.zero)),
+            child: Text(
+              ' Forgot password?',
               style: TextStyle(
-                color: Colors.white,
+                color: Colors.grey.shade500,
+                fontSize: 16,
                 fontWeight: FontWeight.w400,
               ),
             ),

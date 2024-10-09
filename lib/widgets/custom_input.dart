@@ -24,8 +24,16 @@ class CustomTextFieldState extends State<CustomTextField> {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(widget.labelText),
+        Text(
+          " ${widget.labelText}",
+          style: const TextStyle(
+            color: Colors.white,
+            fontSize: 17,
+          ),
+        ),
+        const SizedBox(height: 6),
         TextField(
           obscureText: widget.isPassword ? _obscureText : false,
           keyboardType: widget.keyboardType,
@@ -36,7 +44,8 @@ class CustomTextFieldState extends State<CustomTextField> {
             contentPadding:
                 const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
             filled: true, // Enables background color
-            fillColor: Colors.grey[200], // Set the background color
+            fillColor:
+                Colors.white.withOpacity(.15), // Set the background color
             hintText: widget.placeholder,
             hintStyle: TextStyle(
               color: Colors.white.withOpacity(0.6),
@@ -58,13 +67,16 @@ class CustomTextFieldState extends State<CustomTextField> {
                 : null,
             enabledBorder: OutlineInputBorder(
               borderSide: BorderSide(
-                color: Colors.white.withOpacity(0.4),
-                width: 2,
+                color: Colors.white.withOpacity(0.6),
+                // width: 2,
               ),
               borderRadius: BorderRadius.circular(12),
             ),
             focusedBorder: OutlineInputBorder(
-              borderSide: const BorderSide(color: Colors.orange),
+              borderSide: const BorderSide(
+                color: Colors.orange,
+                width: 2,
+              ),
               borderRadius: BorderRadius.circular(12),
             ),
           ),
