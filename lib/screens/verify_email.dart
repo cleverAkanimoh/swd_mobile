@@ -59,6 +59,7 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
             buildProgressIndicators(currentProgress),
             const SizedBox(height: 15),
             _buildFooter(),
+            const SizedBox(height: 35),
           ],
         ),
       ),
