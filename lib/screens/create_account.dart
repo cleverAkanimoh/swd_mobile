@@ -116,7 +116,7 @@ class CreateAccountScreen extends StatelessWidget {
         ),
         const SizedBox(height: 20),
         const CustomTextField(
-          placeholder: 'Enter Create Password',
+          placeholder: 'Enter Password',
           labelText: 'Create Password',
           isPassword: true,
         ),
