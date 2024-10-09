@@ -9,19 +9,22 @@ class LoginForm extends StatelessWidget {
     return Column(
       children: [
         const CustomTextField(
-          labelText: "Email address",
+          labelText: "Enter Email address",
           keyboardType: TextInputType.emailAddress,
         ),
         const SizedBox(height: 20),
-        const CustomTextField(labelText: "Password", isPassword: true),
+        const CustomTextField(labelText: "Enter Password", isPassword: true),
         const SizedBox(height: 10),
         Align(
-          alignment: Alignment.centerRight,
+          alignment: Alignment.centerLeft,
           child: TextButton(
             onPressed: () {},
             child: const Text(
               'Forgot password?',
-              style: TextStyle(color: Colors.orange),
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.w400,
+              ),
             ),
           ),
         ),

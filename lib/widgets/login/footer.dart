@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:swd_mobile/helpers/responsive.dart';
+import 'package:swd_mobile/widgets/custom_button.dart';
+import 'package:swd_mobile/widgets/gradient_text.dart';
 
 class LoginFooter extends StatelessWidget {
   const LoginFooter({super.key});
@@ -8,17 +9,7 @@ class LoginFooter extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        MaterialButton(
-          minWidth: Responsive.width(context),
-          padding: const EdgeInsets.symmetric(vertical: 15),
-          color: Colors.orange,
-          shape: const StadiumBorder(),
-          onPressed: () {},
-          child: const Text(
-            'Sign in',
-            style: TextStyle(fontSize: 18, color: Colors.white),
-          ),
-        ),
+        CustomButton(text: 'Sign in', onPressed: () {}),
         const SizedBox(height: 20),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -29,9 +20,15 @@ class LoginFooter extends StatelessWidget {
             ),
             TextButton(
               onPressed: () {},
-              child: const Text(
-                'Create account',
-                style: TextStyle(color: Colors.orange),
+              style: TextButton.styleFrom(
+                padding: const EdgeInsets.symmetric(horizontal: 4),
+              ),
+              child: const GradientText(
+                text: "Create account",
+                gradient: LinearGradient(
+                  colors: [Colors.pink, Colors.orange],
+                ),
+                style: TextStyle(),
               ),
             ),
           ],

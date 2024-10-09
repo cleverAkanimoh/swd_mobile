@@ -24,16 +24,21 @@ class CustomTextFieldState extends State<CustomTextField> {
     return TextField(
       obscureText: widget.isPassword ? _obscureText : false,
       keyboardType: widget.keyboardType,
-      style: const TextStyle(color: Colors.white),
+      clipBehavior: Clip.antiAlias,
+      cursorColor: Colors.white,
+      style: TextStyle(color: Colors.white.withOpacity(.7)),
       decoration: InputDecoration(
+        contentPadding: const EdgeInsets.symmetric(horizontal: 20),
         labelText: widget.labelText,
-        labelStyle: TextStyle(color: Colors.white.withOpacity(0.7)),
-        fillColor: Colors.grey.shade200,
+        labelStyle: TextStyle(
+          color: Colors.white.withOpacity(0.6),
+          fontWeight: FontWeight.w400,
+        ),
         suffixIcon: widget.isPassword
             ? IconButton(
                 icon: Icon(
                   _obscureText ? Icons.visibility_off : Icons.visibility,
-                  color: Colors.white.withOpacity(0.5),
+                  color: Colors.white.withOpacity(0.7),
                 ),
                 onPressed: () {
                   setState(() {
@@ -44,11 +49,14 @@ class CustomTextFieldState extends State<CustomTextField> {
               )
             : null,
         enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.white.withOpacity(0.3)),
-        ),
-        focusedBorder: const OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.orange),
-        ),
+            borderSide: BorderSide(
+              color: Colors.white.withOpacity(0.4),
+              width: 2,
+            ),
+            borderRadius: BorderRadius.circular(12)),
+        focusedBorder: OutlineInputBorder(
+            borderSide: const BorderSide(color: Colors.orange),
+            borderRadius: BorderRadius.circular(12)),
       ),
     );
   }

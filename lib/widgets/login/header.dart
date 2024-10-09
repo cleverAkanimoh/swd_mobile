@@ -14,7 +14,7 @@ class LoginHeader extends StatelessWidget {
         ),
         const SizedBox(height: 20),
         const Text(
-          'Welcome back 👋',
+          'Welcome back 👋🏽',
           style: TextStyle(
             fontSize: 32,
             fontWeight: FontWeight.w200,
