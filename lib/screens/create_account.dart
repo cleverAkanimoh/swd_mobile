@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:swd_mobile/helpers/navigator_push.dart';
 import 'package:swd_mobile/helpers/responsive.dart';
 import 'package:swd_mobile/screens/login.dart';
+import 'package:swd_mobile/widgets/custom_back_button.dart';
 import 'package:swd_mobile/widgets/custom_button.dart';
 import 'package:swd_mobile/widgets/gradient_text.dart';
 import '../widgets/custom_input.dart';
+import 'verify_email.dart';
 
 class CreateAccountScreen extends StatelessWidget {
   const CreateAccountScreen({super.key});
@@ -18,7 +20,7 @@ class CreateAccountScreen extends StatelessWidget {
       appBar: _buildAppBar(context),
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 20.0),
-        child: _buildFormContent(currentProgress),
+        child: _buildFormContent(context, currentProgress),
       ),
     );
   }
@@ -26,27 +28,9 @@ class CreateAccountScreen extends StatelessWidget {
   /// Builds the AppBar with back button and "Sign in instead" text.
   AppBar _buildAppBar(BuildContext context) {
     return AppBar(
-      backgroundColor: Colors.transparent,
-      elevation: 0,
-      leading: IconButton(
-        icon: _buildBackButton(),
-        onPressed: () => Navigator.of(context).pop(),
-      ),
+      leading: const CustomBackButton(),
       actions: [
         _buildSignInInsteadAction(context),
-      ],
-    );
-  }
-
-  /// Builds the back button in the AppBar.
-  Row _buildBackButton() {
-    return Row(
-      children: [
-        Icon(Icons.chevron_left, color: Colors.grey.shade400),
-        Text(
-          "Back",
-          style: TextStyle(color: Colors.grey.shade400),
-        ),
       ],
     );
   }
@@ -71,7 +55,7 @@ class CreateAccountScreen extends StatelessWidget {
   /// Builds the gradient underline for "Sign in instead" action.
   Container _buildGradientLine() {
     return Container(
-      height: 2,
+      height: 1.5,
       width: 100,
       decoration: const BoxDecoration(
         gradient: LinearGradient(
@@ -85,7 +69,7 @@ class CreateAccountScreen extends StatelessWidget {
   }
 
   /// Builds the main form content.
-  Column _buildFormContent(int currentProgress) {
+  Column _buildFormContent(BuildContext context, int currentProgress) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -127,9 +111,12 @@ class CreateAccountScreen extends StatelessWidget {
           keyboardType: TextInputType.text,
         ),
         const SizedBox(height: 30),
-        CustomButton(text: "Next", onPressed: () {}),
-        const SizedBox(height: 40),
-        _buildProgressIndicators(currentProgress),
+        CustomButton(
+            text: "Next",
+            onPressed: () =>
+                NavigatorPush.push(context, const VerifyEmailScreen())),
+        const SizedBox(height: 35),
+        buildProgressIndicators(currentProgress),
         const SizedBox(height: 15),
         const Center(
           child: Text(
@@ -164,17 +151,17 @@ class CreateAccountScreen extends StatelessWidget {
       ],
     );
   }
+}
 
-  /// Builds the progress indicators below the form.
-  Row _buildProgressIndicators(int currentProgress) {
-    return Row(
-      children: [
-        ProgressBar(currentProgress: currentProgress, progressId: 1),
-        const SizedBox(width: 6),
-        ProgressBar(currentProgress: currentProgress, progressId: 2),
-      ],
-    );
-  }
+/// Builds the progress indicators below the form.
+Row buildProgressIndicators(int currentProgress) {
+  return Row(
+    children: [
+      ProgressBar(currentProgress: currentProgress, progressId: 1),
+      const SizedBox(width: 6),
+      ProgressBar(currentProgress: currentProgress, progressId: 2),
+    ],
+  );
 }
 
 /// ProgressBar widget shows the current progress state.

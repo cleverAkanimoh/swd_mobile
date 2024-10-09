@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:swd_mobile/helpers/navigator_push.dart';
 import 'package:swd_mobile/screens/create_account.dart';
+import 'package:swd_mobile/screens/home.dart';
 import 'package:swd_mobile/widgets/custom_button.dart';
 import 'package:swd_mobile/widgets/gradient_text.dart';
 
@@ -11,7 +12,11 @@ class LoginFooter extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        CustomButton(text: 'Sign in', onPressed: () {}),
+        CustomButton(
+            text: 'Sign in',
+            onPressed: () => NavigatorPush.pushRemoveUntil(
+                  page: const HomeScreen(),
+                )),
         const SizedBox(height: 20),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,

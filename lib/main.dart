@@ -19,6 +19,10 @@ class MyApp extends StatelessWidget {
       color: Colors.white,
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.black,
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+        ),
         useMaterial3: true,
         fontFamily: "Aeonik",
       ),
