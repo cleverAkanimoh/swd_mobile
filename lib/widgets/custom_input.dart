@@ -28,7 +28,10 @@ class CustomTextFieldState extends State<CustomTextField> {
       cursorColor: Colors.white,
       style: TextStyle(color: Colors.white.withOpacity(.7)),
       decoration: InputDecoration(
-        contentPadding: const EdgeInsets.symmetric(horizontal: 20),
+        contentPadding:
+            const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+        filled: true, // Enables background color
+        fillColor: Colors.grey[200], // Set the background color
         labelText: widget.labelText,
         labelStyle: TextStyle(
           color: Colors.white.withOpacity(0.6),
@@ -49,14 +52,16 @@ class CustomTextFieldState extends State<CustomTextField> {
               )
             : null,
         enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(
-              color: Colors.white.withOpacity(0.4),
-              width: 2,
-            ),
-            borderRadius: BorderRadius.circular(12)),
+          borderSide: BorderSide(
+            color: Colors.white.withOpacity(0.4),
+            width: 2,
+          ),
+          borderRadius: BorderRadius.circular(12),
+        ),
         focusedBorder: OutlineInputBorder(
-            borderSide: const BorderSide(color: Colors.orange),
-            borderRadius: BorderRadius.circular(12)),
+          borderSide: const BorderSide(color: Colors.orange),
+          borderRadius: BorderRadius.circular(12),
+        ),
       ),
     );
   }
