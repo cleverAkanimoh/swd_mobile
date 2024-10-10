@@ -200,30 +200,27 @@ class HomeScreen extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        _buildActionButton(Icons.add, 'Top up'),
+        _buildActionButton("assets/images/Plus-icon.png", 'Top up'),
         Container(
           width: 1,
           height: 20,
           color: Colors.black12,
         ),
-        _buildActionButton(Icons.send, 'Transfer'),
+        _buildActionButton("assets/images/send-icon.png", 'Transfer'),
         Container(
           width: 1,
           height: 20,
           color: Colors.black12,
         ),
-        _buildActionButton(Icons.history, 'History'),
+        _buildActionButton("assets/images/history-icon.png", 'History'),
       ],
     );
   }
 
-  Widget _buildActionButton(IconData icon, String label) {
+  Widget _buildActionButton(String src, String label) {
     return Column(
       children: [
-        CircleAvatar(
-          backgroundColor: Colors.white24,
-          child: Icon(icon, color: Colors.black),
-        ),
+        Image.asset(src),
         const SizedBox(height: 8),
         Text(label, style: const TextStyle(color: Colors.black)),
       ],
@@ -266,8 +263,8 @@ class HomeScreen extends StatelessWidget {
           itemBuilder: (context, index) {
             return Container(
               decoration: const BoxDecoration(
-                color: Color.fromRGBO(40, 40, 40, 1),
-              ),
+                  color: Color.fromRGBO(40, 40, 40, 1),
+                  borderRadius: BorderRadius.all(Radius.circular(5))),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
