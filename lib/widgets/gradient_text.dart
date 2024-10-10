@@ -11,6 +11,7 @@ class GradientText extends StatelessWidget {
     this.gradient = const LinearGradient(
       colors: [
         Color.fromRGBO(239, 88, 88, 1),
+        Color.fromRGBO(239, 88, 88, 1),
         Color.fromRGBO(239, 160, 88, 1),
       ],
     ),

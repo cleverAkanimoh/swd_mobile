@@ -45,10 +45,10 @@ class CustomTextFieldState extends State<CustomTextField> {
                 const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
             filled: true, // Enables background color
             fillColor:
-                Colors.white.withOpacity(.15), // Set the background color
+                const Color.fromRGBO(41, 41, 41, 1), // Set the background color
             hintText: widget.placeholder,
-            hintStyle: TextStyle(
-              color: Colors.white.withOpacity(0.6),
+            hintStyle: const TextStyle(
+              color: Color.fromRGBO(164, 164, 164, 1),
               fontWeight: FontWeight.w400,
             ),
             suffixIcon: widget.isPassword
@@ -66,8 +66,8 @@ class CustomTextFieldState extends State<CustomTextField> {
                   )
                 : null,
             enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(
-                color: Colors.white.withOpacity(0.6),
+              borderSide: const BorderSide(
+                color: Color.fromRGBO(81, 81, 81, 1),
                 // width: 2,
               ),
               borderRadius: BorderRadius.circular(12),

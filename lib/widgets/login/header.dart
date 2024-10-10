@@ -7,10 +7,12 @@ class LoginHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Icon(
-          Icons.person_outline,
-          size: 100,
-          color: Colors.white.withOpacity(0.7), // Profile icon
+        Container(
+          width: 100,
+          height: 100,
+          decoration: BoxDecoration(
+              color: const Color.fromRGBO(30, 30, 30, 1),
+              borderRadius: BorderRadius.circular(8)),
         ),
         const SizedBox(height: 20),
         const Text(

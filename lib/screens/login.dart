@@ -8,26 +8,42 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: EdgeInsets.all(18.0),
-            child: Column(
-              children: [
-                SizedBox(height: 150), // Optional, adjust based on header size
-                LoginHeader(), // Header section (icon and welcome text)
-                SizedBox(height: 40),
-                LoginForm(), // Email & Password fields
-                SizedBox(height: 30),
-                LoginFooter(), // Buttons (sign-in, forgot password, etc.)
-                SizedBox(
-                    height: 50), // Optional, adds extra space at the bottom
-              ],
-            ),
+    return Scaffold(
+      body: Stack(
+        children: [
+          buildBackground(),
+          const SingleChildScrollView(
+            padding: EdgeInsets.symmetric(vertical: 30.0, horizontal: 20),
+            child: _LoginContent(),
           ),
-        ),
+        ],
       ),
+    );
+  }
+}
+
+Widget buildBackground() {
+  return Positioned(
+    right: 0,
+    child: Image.asset("assets/images/grad.png", fit: BoxFit.cover),
+  );
+}
+
+class _LoginContent extends StatelessWidget {
+  const _LoginContent();
+
+  @override
+  Widget build(BuildContext context) {
+    return const Column(
+      children: [
+        SizedBox(height: 120), // adjust based on header size
+        LoginHeader(), // Header section (icon and welcome text)
+        SizedBox(height: 40),
+        LoginForm(), // Email & Password fields
+        SizedBox(height: 30),
+        LoginFooter(), // Buttons (sign-in, forgot password, etc.)
+        SizedBox(height: 50), // Optional, adds extra space at the bottom
+      ],
     );
   }
 }

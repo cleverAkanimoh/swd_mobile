@@ -7,13 +7,21 @@ class CustomBackButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return IconButton(
       onPressed: () => Navigator.of(context).pop(),
-      icon: Row(
+      icon: const Row(
         children: [
-          Icon(Icons.chevron_left, color: Colors.grey.shade400),
-          const SizedBox(width: 10),
+          Icon(
+            Icons.chevron_left,
+            color: Color.fromRGBO(185, 185, 185, 1),
+            size: 24,
+          ),
+          SizedBox(width: 10),
           Text(
             "Back",
-            style: TextStyle(color: Colors.grey.shade400),
+            style: TextStyle(
+              color: Color.fromRGBO(185, 185, 185, 1),
+              fontSize: 16,
+              fontWeight: FontWeight.w400,
+            ),
           ),
         ],
       ),

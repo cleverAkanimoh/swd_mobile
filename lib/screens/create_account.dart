@@ -17,21 +17,34 @@ class CreateAccountScreen extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: Colors.black,
-      appBar: _buildAppBar(context),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.symmetric(horizontal: 20.0),
-        child: _buildFormContent(context, currentProgress),
+      body: Stack(
+        children: [
+          buildBackground(),
+          Column(
+            children: [
+              _buildAppBarHeader(context),
+              SingleChildScrollView(
+                padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                child: _buildFormContent(context, currentProgress),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }
 
   /// Builds the AppBar with back button and "Sign in instead" text.
-  AppBar _buildAppBar(BuildContext context) {
-    return AppBar(
-      leading: const CustomBackButton(),
-      actions: [
-        _buildSignInInsteadAction(context),
-      ],
+  Widget _buildAppBarHeader(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 10, right: 10, top: 35),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          const CustomBackButton(),
+          _buildSignInInsteadAction(context),
+        ],
+      ),
     );
   }
 

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:swd_mobile/helpers/navigator_push.dart';
 import 'package:swd_mobile/screens/home.dart';
+import 'package:swd_mobile/screens/login.dart';
 import 'package:swd_mobile/widgets/custom_back_button.dart';
 import '../widgets/custom_button.dart';
 import 'create_account.dart';
@@ -38,30 +39,39 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
   Widget build(BuildContext context) {
     const currentProgress = 2;
     return Scaffold(
-      appBar: AppBar(leading: const CustomBackButton()),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 24.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SizedBox(height: 20),
-            _buildHeader(),
-            const SizedBox(height: 40),
-            _buildOtpRow(),
-            const Spacer(),
-            CustomButton(
-              text: 'Verify email',
-              onPressed: () => NavigatorPush.pushRemoveUntil(
-                page: const HomeScreen(),
-              ),
+      body: Stack(
+        children: [
+          buildBackground(),
+          Container(
+            padding: const EdgeInsets.only(
+              left: 24.0,
+              right: 24,
+              top: 40,
             ),
-            const SizedBox(height: 35),
-            buildProgressIndicators(currentProgress),
-            const SizedBox(height: 15),
-            _buildFooter(),
-            const SizedBox(height: 35),
-          ],
-        ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const CustomBackButton(),
+                const SizedBox(height: 20),
+                _buildHeader(),
+                const SizedBox(height: 40),
+                _buildOtpRow(),
+                const Spacer(),
+                CustomButton(
+                  text: 'Verify email',
+                  onPressed: () => NavigatorPush.pushRemoveUntil(
+                    page: const HomeScreen(),
+                  ),
+                ),
+                const SizedBox(height: 35),
+                buildProgressIndicators(currentProgress),
+                const SizedBox(height: 15),
+                _buildFooter(),
+                const SizedBox(height: 35),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }

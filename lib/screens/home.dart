@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:swd_mobile/helpers/responsive.dart';
 import 'package:swd_mobile/widgets/gradient_text.dart';
 
@@ -124,114 +125,130 @@ class HomeScreen extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Row(
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text(
-                    'WALLET BALANCE',
-                    style: TextStyle(
-                      color: Colors.white70,
-                      fontSize: 10,
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
-                  const SizedBox(height: 2),
-                  const Text(
-                    'NGN 50,000',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  const SizedBox(height: 10),
-                  Container(
-                    padding:
-                        const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
-                    decoration: const BoxDecoration(
-                      color: Colors.white60,
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(40),
-                      ),
-                    ),
-                    child: const Row(
-                      children: [
-                        Text(
-                          'Cashback',
-                          style: TextStyle(color: Colors.black, fontSize: 10),
-                        ),
-                        SizedBox(width: 3),
-                        GradientText(
-                          text: "N341.20",
-                          style: TextStyle(fontSize: 10),
-                        )
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(width: 8),
-              const Icon(
-                Icons.visibility_off,
-                color: Colors.white70,
-                size: 14,
-              ),
-            ],
-          ),
+          buildWalletBalance(),
           Container(
             height: 69,
             width: 1,
             decoration:
                 const BoxDecoration(color: Color.fromRGBO(208, 78, 78, 0.6)),
           ),
-          Container(
-            padding: const EdgeInsets.all(8),
-            decoration: const BoxDecoration(
-              color: Color.fromRGBO(255, 255, 255, .2),
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(8),
-                bottomRight: Radius.circular(8),
+          buildWalletInfo(),
+        ],
+      ),
+    );
+  }
+
+  Row buildWalletBalance() {
+    return Row(
+      children: [
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text(
+              'WALLET BALANCE',
+              style: TextStyle(
+                color: Colors.white70,
+                fontSize: 10,
+                fontWeight: FontWeight.w400,
               ),
             ),
-            child: Row(
-              children: [
-                const Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'MONIEPOINT',
-                      textAlign: TextAlign.right,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 10,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                    Text(
-                      '8192017482',
-                      textAlign: TextAlign.right,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w900,
-                      ),
-                    ),
-                    Text(
-                      'Deposit Fee: N20',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 10,
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(width: 8),
-                Image.asset("assets/images/copy-icon.png"),
-              ],
+            const SizedBox(height: 2),
+            const Text(
+              'NGN 50,000',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
             ),
+            const SizedBox(height: 10),
+            Container(
+              padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+              decoration: const BoxDecoration(
+                color: Colors.white60,
+                borderRadius: BorderRadius.all(
+                  Radius.circular(40),
+                ),
+              ),
+              child: const Row(
+                children: [
+                  Text(
+                    'Cashback',
+                    style: TextStyle(color: Colors.black, fontSize: 10),
+                  ),
+                  SizedBox(width: 3),
+                  GradientText(
+                    text: "N341.20",
+                    style: TextStyle(fontSize: 10),
+                  )
+                ],
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(width: 8),
+        const Icon(
+          Icons.visibility_off,
+          color: Colors.white70,
+          size: 14,
+        ),
+      ],
+    );
+  }
+
+  Container buildWalletInfo() {
+    return Container(
+      padding: const EdgeInsets.all(8),
+      decoration: const BoxDecoration(
+        color: Color.fromRGBO(255, 255, 255, .2),
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(8),
+          bottomRight: Radius.circular(8),
+        ),
+      ),
+      child: Row(
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text(
+                'MONIEPOINT',
+                textAlign: TextAlign.right,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 10,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+              const Text(
+                '8192017482',
+                textAlign: TextAlign.right,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w900,
+                ),
+              ),
+              Column(
+                children: [
+                  const Text(
+                    'Deposit Fee: N20',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 10,
+                    ),
+                  ),
+                  Container(
+                    width: 80,
+                    height: 0.5,
+                    color: Colors.white,
+                  )
+                ],
+              ),
+            ],
           ),
+          const SizedBox(width: 8),
+          Image.asset("assets/images/copy-icon.png"),
         ],
       ),
     );

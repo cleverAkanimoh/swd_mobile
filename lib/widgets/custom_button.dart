@@ -18,11 +18,12 @@ class CustomButton extends StatelessWidget {
         gradient: const LinearGradient(
           colors: [
             Color.fromRGBO(239, 88, 88, 1),
+            Color.fromRGBO(239, 88, 88, 1),
             Color.fromRGBO(239, 160, 88, 1),
           ],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
-          transform: GradientRotation(45),
+          // transform: GradientRotation(75),
         ),
         borderRadius: BorderRadius.circular(12.0),
       ),
