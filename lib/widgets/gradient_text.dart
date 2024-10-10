@@ -9,7 +9,10 @@ class GradientText extends StatelessWidget {
     super.key,
     required this.text,
     this.gradient = const LinearGradient(
-      colors: [Colors.pink, Colors.orange],
+      colors: [
+        Color.fromRGBO(239, 88, 88, 1),
+        Color.fromRGBO(239, 160, 88, 1),
+      ],
     ),
     required this.style,
   });

@@ -15,11 +15,14 @@ class CustomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return DecoratedBox(
       decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: [Colors.pink, Colors.orange.shade300],
+        gradient: const LinearGradient(
+          colors: [
+            Color.fromRGBO(239, 88, 88, 1),
+            Color.fromRGBO(239, 160, 88, 1),
+          ],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
-          transform: const GradientRotation(45),
+          transform: GradientRotation(45),
         ),
         borderRadius: BorderRadius.circular(12.0),
       ),
