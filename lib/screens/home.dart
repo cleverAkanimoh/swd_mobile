@@ -8,54 +8,70 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: DecoratedBox(
-        decoration: const BoxDecoration(
-          shape: BoxShape.circle,
-          gradient: LinearGradient(
-            colors: [
-              Color.fromRGBO(239, 88, 88, 1),
-              Color.fromRGBO(239, 160, 88, 1),
+      floatingActionButton: buildFloatingActionButton(),
+      body: buildContents(context),
+      bottomNavigationBar: _buildBottomNavigationBar(),
+    );
+  }
+
+  DecoratedBox buildFloatingActionButton() {
+    return DecoratedBox(
+      decoration: const BoxDecoration(
+        shape: BoxShape.circle,
+        gradient: LinearGradient(
+          colors: [
+            Color.fromRGBO(239, 88, 88, 1),
+            Color.fromRGBO(239, 160, 88, 1),
+          ],
+        ),
+      ),
+      child: FloatingActionButton(
+        onPressed: null,
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        shape: const CircleBorder(),
+        child: Image.asset("assets/images/Chat_Conversation_Circle.png"),
+      ),
+    );
+  }
+
+  Column buildContents(BuildContext context) {
+    return Column(
+      children: [
+        Container(
+          padding: const EdgeInsets.only(
+            top: 50,
+            left: 25,
+            right: 25,
+            bottom: 15,
+          ),
+          decoration: const BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(24),
+              bottomRight: Radius.circular(24),
+            ),
+          ),
+          child: Column(
+            children: [
+              _buildHeading(),
+              const SizedBox(height: 30),
+              _buildWalletCard(),
+              const SizedBox(height: 25),
+              _buildActionButtons(),
+              const SizedBox(height: 30),
+              Container(
+                height: 5,
+                width: 48,
+                decoration: BoxDecoration(
+                    color: const Color.fromRGBO(233, 233, 233, 1),
+                    borderRadius: BorderRadius.circular(104)),
+              )
             ],
           ),
         ),
-        child: FloatingActionButton(
-          onPressed: null,
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          shape: const CircleBorder(),
-          child: Image.asset("assets/images/Chat_Conversation_Circle.png"),
-        ),
-      ),
-      body: Column(
-        children: [
-          Container(
-            padding:
-                const EdgeInsets.only(top: 50, left: 25, right: 25, bottom: 15),
-            decoration: const BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(24),
-                  bottomRight: Radius.circular(24),
-                )),
-            child: Column(
-              children: [
-                _buildHeading(),
-                const SizedBox(height: 30),
-                _buildWalletCard(),
-                const SizedBox(height: 25),
-                _buildActionButtons(),
-                const SizedBox(height: 35),
-                Container(
-                  height: 5,
-                  width: 48,
-                  decoration: BoxDecoration(
-                      color: const Color.fromRGBO(233, 233, 233, 1),
-                      borderRadius: BorderRadius.circular(104)),
-                )
-              ],
-            ),
-          ),
-          Padding(
+        Expanded(
+          child: SingleChildScrollView(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -67,9 +83,8 @@ class HomeScreen extends StatelessWidget {
               ],
             ),
           ),
-        ],
-      ),
-      bottomNavigationBar: _buildBottomNavigationBar(),
+        ),
+      ],
     );
   }
 
@@ -227,19 +242,19 @@ class HomeScreen extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         _buildActionButton("assets/images/Plus-icon.png", 'Top up'),
-        Container(
-          width: 1,
-          height: 20,
-          color: Colors.black12,
-        ),
+        buildVerticalDivider(),
         _buildActionButton("assets/images/send-icon.png", 'Transfer'),
-        Container(
-          width: 1,
-          height: 20,
-          color: Colors.black12,
-        ),
+        buildVerticalDivider(),
         _buildActionButton("assets/images/history-icon.png", 'History'),
       ],
+    );
+  }
+
+  Container buildVerticalDivider() {
+    return Container(
+      width: 1,
+      height: 20,
+      color: Colors.black12,
     );
   }
 
@@ -339,7 +354,7 @@ class HomeScreen extends StatelessWidget {
         ),
         const SizedBox(height: 10),
         SizedBox(
-          height: 120,
+          height: 140,
           width: Responsive.width(context),
           child: ListView(
             physics: const BouncingScrollPhysics(),
@@ -356,33 +371,74 @@ class HomeScreen extends StatelessWidget {
   }
 
   Widget _buildBottomNavigationBar() {
-    return BottomNavigationBar(
-      backgroundColor: Colors.black,
-      selectedItemColor: Colors.white,
-      unselectedItemColor: const Color.fromRGBO(105, 105, 105, 1),
-      showUnselectedLabels: true,
-      items: [
-        const BottomNavigationBarItem(
-          icon: Icon(Icons.home),
-          label: 'Home',
-        ),
-        BottomNavigationBarItem(
-          icon: Image.asset('assets/images/More_Grid_Big.png'),
-          label: 'Services',
-        ),
-        BottomNavigationBarItem(
-          icon: Image.asset('assets/images/Arrow_Down_Up.png'),
-          label: 'Statistics',
-        ),
-        BottomNavigationBarItem(
-          icon: Image.asset('assets/images/referrals.png'),
-          label: 'Referrals',
-        ),
-        BottomNavigationBarItem(
-          icon: Image.asset('assets/images/Settings.png'),
-          label: 'Settings',
-        ),
-      ],
+    return Container(
+      color: Colors.black,
+      padding: const EdgeInsets.only(
+        bottom: 16,
+        right: 16,
+        left: 16,
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          CustomBottomNavigationBarItem(
+            icon: Image.asset('assets/images/House_01.png'),
+            label: 'Home',
+            isActive: true,
+          ),
+          CustomBottomNavigationBarItem(
+            icon: Image.asset('assets/images/More_Grid_Big.png'),
+            label: 'Services',
+          ),
+          CustomBottomNavigationBarItem(
+            icon: Image.asset('assets/images/Arrow_Down_Up.png'),
+            label: 'Statistics',
+          ),
+          CustomBottomNavigationBarItem(
+            icon: Image.asset('assets/images/referrals.png'),
+            label: 'Referrals',
+          ),
+          CustomBottomNavigationBarItem(
+            icon: Image.asset('assets/images/Settings.png'),
+            label: 'Settings',
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class CustomBottomNavigationBarItem extends StatelessWidget {
+  final Widget icon;
+  final String label;
+  final bool isActive;
+  const CustomBottomNavigationBarItem({
+    super.key,
+    required this.icon,
+    required this.label,
+    this.isActive = false,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return TextButton(
+      onPressed: () {},
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          SizedBox(width: 22, child: icon),
+          const SizedBox(height: 5),
+          Text(
+            label,
+            style: TextStyle(
+              fontSize: 12,
+              color: isActive
+                  ? Colors.white
+                  : const Color.fromRGBO(105, 105, 105, 1),
+            ),
+          )
+        ],
+      ),
     );
   }
 }
