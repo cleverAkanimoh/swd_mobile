@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:swd_mobile/helpers/responsive.dart';
 import 'package:swd_mobile/widgets/gradient_text.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -7,12 +8,29 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      floatingActionButton: DecoratedBox(
+        decoration: const BoxDecoration(
+          shape: BoxShape.circle,
+          gradient: LinearGradient(
+            colors: [
+              Color.fromRGBO(239, 88, 88, 1),
+              Color.fromRGBO(239, 160, 88, 1),
+            ],
+          ),
+        ),
+        child: FloatingActionButton(
+          onPressed: null,
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          shape: const CircleBorder(),
+          child: Image.asset("assets/images/Chat_Conversation_Circle.png"),
+        ),
+      ),
       body: Column(
         children: [
           Container(
             padding:
-                const EdgeInsets.only(top: 50, left: 25, right: 25, bottom: 30),
+                const EdgeInsets.only(top: 50, left: 25, right: 25, bottom: 15),
             decoration: const BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(
@@ -22,10 +40,18 @@ class HomeScreen extends StatelessWidget {
             child: Column(
               children: [
                 _buildHeading(),
-                const SizedBox(height: 20),
+                const SizedBox(height: 30),
                 _buildWalletCard(),
-                const SizedBox(height: 20),
+                const SizedBox(height: 25),
                 _buildActionButtons(),
+                const SizedBox(height: 35),
+                Container(
+                  height: 5,
+                  width: 48,
+                  decoration: BoxDecoration(
+                      color: const Color.fromRGBO(233, 233, 233, 1),
+                      borderRadius: BorderRadius.circular(104)),
+                )
               ],
             ),
           ),
@@ -34,10 +60,10 @@ class HomeScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(height: 20),
+                const SizedBox(height: 35),
                 _buildQuickActions(),
-                const SizedBox(height: 20),
-                _buildNewsUpdateSection(),
+                const SizedBox(height: 35),
+                _buildNewsUpdateSection(context),
               ],
             ),
           ),
@@ -222,7 +248,12 @@ class HomeScreen extends StatelessWidget {
       children: [
         Image.asset(src),
         const SizedBox(height: 8),
-        Text(label, style: const TextStyle(color: Colors.black)),
+        Text(
+          label,
+          style: const TextStyle(
+            color: Color.fromRGBO(75, 75, 75, 1),
+          ),
+        ),
       ],
     );
   }
@@ -281,7 +312,7 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildNewsUpdateSection() {
+  Widget _buildNewsUpdateSection(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -290,23 +321,33 @@ class HomeScreen extends StatelessWidget {
           children: [
             Text(
               'News & Update',
-              style: TextStyle(color: Colors.white70, fontSize: 18),
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 18,
+                fontWeight: FontWeight.w500,
+              ),
             ),
             Text(
               'View all',
-              style: TextStyle(color: Colors.redAccent),
+              style: TextStyle(
+                color: Color.fromRGBO(239, 88, 88, 1),
+                fontSize: 16,
+                fontWeight: FontWeight.w500,
+              ),
             ),
           ],
         ),
         const SizedBox(height: 10),
         SizedBox(
-          height: 100,
+          height: 120,
+          width: Responsive.width(context),
           child: ListView(
+            physics: const BouncingScrollPhysics(),
             scrollDirection: Axis.horizontal,
             children: [
-              _buildNewsCard(),
+              Image.asset("assets/images/news-image-1.png"),
               const SizedBox(width: 16),
-              _buildNewsCard(),
+              Image.asset("assets/images/news-image-2.png"),
             ],
           ),
         ),
@@ -314,36 +355,20 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildNewsCard() {
-    return Container(
-      width: 150,
-      decoration: BoxDecoration(
-        color: Colors.white10,
-        borderRadius: BorderRadius.circular(16),
-      ),
-      child: const Center(
-        child: Text(
-          'News content',
-          style: TextStyle(color: Colors.white),
-        ),
-      ),
-    );
-  }
-
   Widget _buildBottomNavigationBar() {
     return BottomNavigationBar(
       backgroundColor: Colors.black,
-      selectedItemColor: Colors.redAccent,
-      unselectedItemColor: Colors.white70,
+      selectedItemColor: Colors.white,
+      unselectedItemColor: const Color.fromRGBO(105, 105, 105, 1),
       showUnselectedLabels: true,
       items: const [
         BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-        BottomNavigationBarItem(icon: Icon(Icons.grid_view), label: 'Services'),
+        BottomNavigationBarItem(icon: Image.asset('assets/images/More_Grid_Big.png'), label: 'Services'),
         BottomNavigationBarItem(
-            icon: Icon(Icons.show_chart), label: 'Statistics'),
+            icon: Image.asset('assets/images/Arrow_Down_Up.png'), label: 'Statistics',),
         BottomNavigationBarItem(
-            icon: Icon(Icons.card_giftcard), label: 'Referrals'),
-        BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'Settings'),
+            icon: Icon(Icons.card_giftcard), label: 'Referrals',),
+        BottomNavigationBarItem(icon: Image.asset('assets/images/Settings.png'), label: 'Settings',),
       ],
     );
   }
