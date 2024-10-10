@@ -361,14 +361,27 @@ class HomeScreen extends StatelessWidget {
       selectedItemColor: Colors.white,
       unselectedItemColor: const Color.fromRGBO(105, 105, 105, 1),
       showUnselectedLabels: true,
-      items: const [
-        BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-        BottomNavigationBarItem(icon: Image.asset('assets/images/More_Grid_Big.png'), label: 'Services'),
+      items: [
+        const BottomNavigationBarItem(
+          icon: Icon(Icons.home),
+          label: 'Home',
+        ),
         BottomNavigationBarItem(
-            icon: Image.asset('assets/images/Arrow_Down_Up.png'), label: 'Statistics',),
+          icon: Image.asset('assets/images/More_Grid_Big.png'),
+          label: 'Services',
+        ),
         BottomNavigationBarItem(
-            icon: Icon(Icons.card_giftcard), label: 'Referrals',),
-        BottomNavigationBarItem(icon: Image.asset('assets/images/Settings.png'), label: 'Settings',),
+          icon: Image.asset('assets/images/Arrow_Down_Up.png'),
+          label: 'Statistics',
+        ),
+        BottomNavigationBarItem(
+          icon: Image.asset('assets/images/referrals.png'),
+          label: 'Referrals',
+        ),
+        BottomNavigationBarItem(
+          icon: Image.asset('assets/images/Settings.png'),
+          label: 'Settings',
+        ),
       ],
     );
   }
